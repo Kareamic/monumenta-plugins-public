@@ -114,6 +114,7 @@ public enum EnchantmentType {
 	SMITE(new Smite(), true, false, false, true),
 	SNIPER(new Sniper(), true, false, false, true),
 	REVERB(new Reverb(), true, false, false, true),
+	STABILITY(new Stability(), true, false, false, true),
 	STAMINA(new Stamina(), true, false, false, true),
 	STARVATION(new Starvation(), false, true, false, false),
 	SUSTENANCE(new Sustenance(), true, false, false, true),

@@ -147,6 +147,7 @@ public class BossUtils {
 		}
 
 		double toTake = raw ? percentHealth : EntityUtils.getMaxHealth(target) * percentHealth;
+		double disablePeriod = 0.5;
 
 		if (target instanceof Player player && bossDamageBlocked(player, location)) {
 			/*
@@ -155,7 +156,7 @@ public class BossUtils {
 			 */
 			if (raw) {
 				if (toTake > 1) {
-					NmsUtils.getVersionAdapter().stunShield(player, (int) Math.ceil(toTake * 0.5));
+					NmsUtils.getVersionAdapter().stunShield(player, (int) Math.ceil(toTake * disablePeriod));
 				}
 				target.getWorld().playSound(target.getLocation(), Sound.ITEM_SHIELD_BREAK, SoundCategory.PLAYERS, 1.0f, 1.0f);
 				ItemUtils.damageShield(player, (int) Math.ceil(toTake / 2.5));

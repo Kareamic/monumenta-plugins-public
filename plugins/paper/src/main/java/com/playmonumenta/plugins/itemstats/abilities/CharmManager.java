@@ -756,6 +756,7 @@ public class CharmManager {
 			MelancholicLament.CHARM_RADIUS,
 			MelancholicLament.CHARM_RECOVERY,
 			MelancholicLament.CHARM_WEAKNESS,
+			MelancholicLament.CHARM_WEAKNESS_DURATION,
 			PhlegmaticResolve.CHARM_ALLY,
 			PhlegmaticResolve.CHARM_RANGE,
 			PhlegmaticResolve.CHARM_RESIST,

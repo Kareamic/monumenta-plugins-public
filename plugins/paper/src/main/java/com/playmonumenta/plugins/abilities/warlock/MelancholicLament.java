@@ -47,6 +47,7 @@ public class MelancholicLament extends Ability {
 	public static final String CHARM_RADIUS = "Melancholic Lament Radius";
 	public static final String CHARM_COOLDOWN = "Melancholic Lament Cooldown";
 	public static final String CHARM_WEAKNESS = "Melancholic Lament Weakness Amplifier";
+	public static final String CHARM_WEAKNESS_DURATION = "Melancholic Lament Weakness Duration"
 	public static final String CHARM_RECOVERY = "Melancholic Lament Negative Effect Recovery";
 	public static final String CHARM_ENHANCE_DAMAGE = "Melancholic Lament Enhancement Damage Modifier";
 	public static final String CHARM_ENHANCE_DURATION = "Melancholic Lament Enhancement Duration";
@@ -72,6 +73,7 @@ public class MelancholicLament extends Ability {
 			.displayItem(Material.GHAST_TEAR);
 
 	private final double mWeakenEffect;
+	private final double mWeakenDuration;
 
 	private int mEnhancementBonusDamage;
 
@@ -80,6 +82,7 @@ public class MelancholicLament extends Ability {
 	public MelancholicLament(Plugin plugin, Player player) {
 		super(plugin, player, INFO);
 		mWeakenEffect = CharmManager.getLevelPercentDecimal(player, CHARM_WEAKNESS) + (isLevelOne() ? WEAKEN_EFFECT_1 : WEAKEN_EFFECT_2);
+		mWeakenDuration = DURATION + CharmManager.getLevelPercentDecimal(player, CHARM_WEAKNESS_DURATION);
 		mCosmetic = CosmeticSkills.getPlayerCosmeticSkill(player, new MelancholicLamentCS());
 	}
 
@@ -95,7 +98,7 @@ public class MelancholicLament extends Ability {
 		double radius = CharmManager.getRadius(mPlayer, CHARM_RADIUS, RADIUS);
 		Hitbox hitbox = new Hitbox.SphereHitbox(LocationUtils.getHalfHeightLocation(mPlayer), radius);
 		for (LivingEntity mob : hitbox.getHitMobs()) {
-			EntityUtils.applyWeaken(mPlugin, DURATION, mWeakenEffect, mob);
+			EntityUtils.applyWeaken(mPlugin, mWeakenDuration, mWeakenEffect, mob);
 			EntityUtils.applyTaunt(mob, mPlayer);
 		}
 
